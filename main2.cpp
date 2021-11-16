@@ -2,13 +2,7 @@
 #include "stack2.hpp"
 
 int main() {
-    Stack<int> x;
-    x.push(10);
-    x.push(11);
-    int y = x.head();
-    std::cout << y;
-    x.pop();
-    y = x.head();
-    std::cout <<" "<< y;
+    Stack<forma> x;
+    x.push_emplace(10,10);
     return 0;
 }

@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "../stack1.hpp"
 #include "gtest/gtest.h"
@@ -28,12 +29,11 @@ TEST(stack1, pop){
     x.pop();
     EXPECT_EQ(x.head(),1);
 }
-TEST(stack1, pop){
+TEST(stack1, copy){
     Stack<int> x;
+    Stack<int> y(x);
     x.push(1);
+    EXPECT_EQ(x.head(),1);
     x.push(2);
     EXPECT_EQ(x.head(),2);
-    x.pop();
-    EXPECT_EQ(x.head(),1);
 }
-

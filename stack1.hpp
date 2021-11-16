@@ -14,6 +14,8 @@ private:
     elem *first;
 public:
     Stack();
+    Stack( const Stack<T> &OtherStack); // копирования
+    Stack( const Stack<T> &&OtherStack); // перемещения
     void push(T &&value);
     void push(const T& value);
     void pop();
@@ -67,5 +69,21 @@ const T &Stack<T>::head() const {
     }
 }
 
+template<typename T> // копирования
+Stack<T>::Stack(const Stack<T> &otherStack) {
+    first= nullptr;
+    elem* x;
+    x=otherStack.first;
+    while (x!= nullptr) {
+        push(x->data);
+        x=x->next;
+    }
+}
+
+template<typename T>// перемещения
+Stack<T>::Stack(const Stack<T> &&OtherStack) {
+    first=OtherStack.first();
+    OtherStack.first= nullptr;
+}
 
 #endif //STACK_STACK1_HPP
