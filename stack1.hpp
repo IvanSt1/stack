@@ -72,10 +72,22 @@ const T &Stack<T>::head() const {
 template<typename T> // копирования
 Stack<T>::Stack(const Stack<T> &otherStack) {
     first= nullptr;
-    elem* x;
+    elem* x,*cur;
+    elem* new_el;
     x=otherStack.first;
     while (x!= nullptr) {
-        push(x->data);
+        new_el=new elem;
+        new_el->data=x->data;
+        if(first== nullptr){
+            first=new_el;
+        }
+        else{
+            cur=first;
+            while(cur->next!= nullptr){
+                cur=cur->next;
+            }
+            cur->next=new_el;
+        }
         x=x->next;
     }
 }

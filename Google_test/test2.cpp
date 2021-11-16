@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "../stack1.hpp"
+#include "../stack2.hpp"
 #include "gtest/gtest.h"
 TEST(Simple, TEst){
     EXPECT_TRUE(true);
@@ -31,11 +31,9 @@ TEST(stack1, pop){
 }
 TEST(stack1, copy){
     Stack<int> x;
+    Stack<int> y(x);
     x.push(1);
+    EXPECT_EQ(x.head(),1);
     x.push(2);
     EXPECT_EQ(x.head(),2);
-    Stack<int> y(x);
-    EXPECT_EQ(y.head(),2);
-    y.pop();
-    EXPECT_EQ(y.head(),1);
 }
