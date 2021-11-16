@@ -33,7 +33,6 @@ TEST(stack1, copy){
     Stack<int> x;
     x.push(1);
     x.push(2);
-    EXPECT_EQ(x.head(),2);
     Stack<int> y(x);
     EXPECT_EQ(y.head(),2);
     y.pop();
