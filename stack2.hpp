@@ -5,17 +5,21 @@
 #ifndef STACK_STACK2_HPP
 #define STACK_STACK2_HPP
 
+#include <utility>
+
 #include "typeinfo"
 struct forma{
     int x;
     int y;
+    std::string s;
     forma(){
         x=0;
         y=0;
     }
-    forma(int x1, int y1){
+    forma(int x1, int y1, std::string str){
         x=x1;
         y=y1;
+        s=std::move(str);
     }
 };
 
