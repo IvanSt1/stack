@@ -30,11 +30,11 @@ private:
         T data;
         elem *next;
     };
-    elem *first;
+    elem *first= nullptr;
 public:
     Stack();
     Stack(Stack<T> &OtherStack); // копирования
-    Stack( Stack<T> &&OtherStack); // перемещения
+    Stack( Stack<T> &&OtherStack) noexcept; // перемещения
     void push(T &&value);
 
     template<typename ... Args>
@@ -49,13 +49,14 @@ public:
 
 template<typename T>
 Stack<T>::Stack() {
-    first = nullptr;
+
 }
 
 template<typename T>
 Stack<T>::~Stack() {
+    elem*x;
     while (first != nullptr) {
-        elem *x = first;
+         x = first;
         first = first->next;
         delete x;
     }
@@ -101,14 +102,15 @@ void Stack<T>::push_emplace(Args &&... value) {
 template<typename T> // копирования
 Stack<T>::Stack( Stack<T> &otherStack) {
     first= nullptr;
-    elem* x,*cur;
-    elem* new_el;
+    elem *x,*cur;
+    elem *new_el;
     x=otherStack.first;
     while (x!= nullptr) {
         new_el=new elem;
         new_el->data=x->data;
+        new_el->next= nullptr;
         if(first== nullptr){
-            first=new_el;
+            first= new_el;
         }
         else{
             cur=first;
@@ -122,7 +124,7 @@ Stack<T>::Stack( Stack<T> &otherStack) {
 }
 
 template<typename T>// перемещения
-Stack<T>::Stack( Stack<T> &&OtherStack) {
+Stack<T>::Stack( Stack<T> &&OtherStack)  noexcept {
     first=OtherStack.first();
     OtherStack.first= nullptr;
 }

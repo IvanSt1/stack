@@ -40,9 +40,8 @@ TEST(stack1, copy){
 }
 TEST(stack1, emplace){
     Stack<forma> x;
-    x.push_emplace(1,2);
-    x.push_emplace(2,1);
-    forma z(1,2);
+    x.push_emplace(1,2,"1 ");
+    x.push_emplace(2,1,"1 ");
     EXPECT_EQ(x.head().x,2);
     EXPECT_EQ(x.head().y,1);
     x.pop();
